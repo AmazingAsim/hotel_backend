@@ -51,12 +51,12 @@ roomsroute.post('/addnewroom', async (req, res) => {
 })
 
 roomsroute.post('/updateroom', async (req, res) => {
-  let { room_id, availability, stars, capacity, guestId } = req.body;
-
+  let { roomId, available, stars, capacity, guestId } = req.body;
+  console.log(req.body)
   try {
-    let result = database.query(`UPDATE rooms SET availability = ${mysql.escape(availability)},
+    let result = await database.query(`UPDATE rooms SET available = ${mysql.escape(available)},
     stars = ${mysql.escape(stars)},capacity = ${mysql.escape(capacity)}
-    ,guestId = ${mysql.escape(guestId)} WHERE room_id=${mysql.escape(room_id)}`)
+    ,guestId = ${mysql.escape(guestId)} WHERE roomId=${mysql.escape(roomId)}`)
     console.log(result)
     res.send(result);
   }
