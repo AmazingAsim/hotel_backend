@@ -9,6 +9,8 @@ const pool = mysql.createPool({
   port:'14165'
 });
 
+console.log(process.env.DB_HOST);
+
 // Export a function to query the database
 module.exports.query = function (sql, values) {
   
