@@ -2,9 +2,9 @@ const mysql = require('mysql2');
 require('dotenv').config();
 // Create a connection pool
 const pool = mysql.createPool({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
+  host: process.env.DB_HOST || 'mysql-da5fef-asmsheikh123-e6a3.a.aivencloud.com',
+  user: process.env.DB_USER || 'avnadmin',
+  password: process.env.DB_PASSWORD || 'AVNS_X427sdqUhMP-_uqQhz-',
   database: 'hotel',
   port:'14165'
 });
