@@ -18,7 +18,7 @@ export default function Updateroom() {
   let submitdata = async (data) => {
     try {
       let result =await axios.post('/rooms/updateroom',
-        { ...data, available,roomId }, { headers: { 'Content-Type': "application/json" } });
+        { ...data, available,roomId,guestId}, { headers: { 'Content-Type': "application/json" } });
      if(result.status==201){
       alert('data updated successfully');
       navigate('/rooms')
