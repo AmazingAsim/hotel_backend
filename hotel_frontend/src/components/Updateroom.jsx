@@ -16,9 +16,11 @@ export default function Updateroom() {
   let navigate  = useNavigate();
   
   let submitdata = async (data) => {
+    let newRoomData = { ...data, available,roomId,guestId};
+    console.log(newRoomData);
     try {
       let result =await axios.post('/rooms/updateroom',
-        { ...data, available,roomId,guestId}, { headers: { 'Content-Type': "application/json" } });
+        newRoomData, { headers: { 'Content-Type': "application/json" } });
      if(result.status==201){
       alert('data updated successfully');
       navigate('/rooms')
@@ -75,7 +77,7 @@ export default function Updateroom() {
 
                         null
                         :
-                        <input  disabled={false}{...register('guestId', { value: param?.guestId })} type="text"
+                        <input  disabled={false} type="text" onChange={(event)=>{setGuestId(event.target.value)}}
                           className="form-control" placeholder='guestId' defaultValue={guestId} />
                     }
 
